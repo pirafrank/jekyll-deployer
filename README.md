@@ -28,8 +28,11 @@ That's what a developer on-the-go do when it's tired of ssh-ing to VPS to publis
     - a reverse proxy server (nginx handles this awesomely)
     - jekyll (needed to actually generate the website)
     - rsync
-- [BitBucket.org](http://bitbucket.org) as git server
 - A Pushbullet account (cause everyone likes pocket notifications)
 - your website has to stay in a git repo (of course...)
 
 ## More info soon!
+
+## License
+
+The software in this repository are released under the GNU GPLv3 License by Francesco Pira (dev[at]fpira[dot]com, fpira.com). You can read the terms of the license [here](http://www.gnu.org/licenses/gpl-3.0.html).

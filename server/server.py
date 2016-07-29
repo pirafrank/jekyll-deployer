@@ -41,13 +41,13 @@ def index():
     if data['deploy_type'] == 'stable':
         tasks.deploy(config,'stable')
         message = '**'+config['stable_branch']+'** branch has been deployed. \
-View it at: '+config['stable_site_url']
+You can access it from: '+config['stable_site_url']
         notify.tell_pushbullet(config,message)
         print message
         return 'OK'
     elif data['deploy_type'] == 'testing':
         tasks.deploy(config,'testing')
-        message = '**'+config['testing_branch']+'** branch has been deployed. \
+        message = '**'+config['testing_branch']+'** branch has been deployed \
 with drafts and future posts. You can access it from '+config['testing_site_url']
         notify.tell_pushbullet(config,message)
         print message
