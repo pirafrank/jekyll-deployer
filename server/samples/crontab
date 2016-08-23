@@ -1,0 +1,4 @@
+# this line is just a template.
+# you have to edit this with your own info.
+
+0 15 * * * /bin/bash /path/to/jekyll-deployer/server/scripts/deploy.sh [repo_dir] [git branch] [target path] stable > /home/YOURNAME/deploy_your_website.log

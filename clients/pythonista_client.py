@@ -1,3 +1,5 @@
+#! python2
+
 import console
 import urllib2
 import json
