@@ -44,7 +44,7 @@ else:
 console.hud_alert('deploying '+branch+'...')
 
 # data and configuration
-api_token: "" # not implemented yet
+api_token = "" # not implemented yet
 config = {
     "action": "deploy",
     "deploy_branch": branch,

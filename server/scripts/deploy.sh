@@ -48,6 +48,9 @@ if [[ "$DEPLOY_COMMAND" == "" ]]; then
     exit 1
 fi
 
+echo "Running bundle install..."
+bundle install
+
 echo "Building..."
 eval $DEPLOY_COMMAND
 
