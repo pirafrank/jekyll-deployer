@@ -1,0 +1,14 @@
+{
+    "host":"localhost",
+    "port":5050,
+    "debug":true,
+    "repository_dir":"/home/chucknorris/Code/my_jekyll_website_repo",
+    "stable_branch":"master",
+    "stable_deploy_dir":"/var/www/mywebsite.com",
+    "testing_deploy_dir":"/var/www/test.mywebsite.com",
+    "stable_site_url":"http://mywebsite.com",
+    "testing_site_url":"http://test.mywebsite.com",
+    "api_token":"xxxyyyzzz444555666",
+    "pushbullet_token":"aaabbbccc111222333dddeeefff",
+    "service_name":"My Awesome website Notificator"
+}

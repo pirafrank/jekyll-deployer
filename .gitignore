@@ -4,7 +4,6 @@ lib
 lib64
 .Python
 pip-selfcheck.json
-config.json
 server/config.json
 *.tmp
 *.temp
