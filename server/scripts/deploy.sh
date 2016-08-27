@@ -6,8 +6,8 @@
 
 REPO_DIR="$1"
 GIT_BRANCH="$2"
-TARGET_PATH="$3"
-IS_TESTING="$4"
+DEPLOY_DIR="$3"
+DEPLOY_COMMAND="$4"
 
 #
 # Script
@@ -30,28 +30,32 @@ if [ ! -d "$REPO_DIR" ]; then
 fi
 cd $REPO_DIR
 
+git remote update origin --prune
 git checkout -f $GIT_BRANCH
 sleep 1
+echo "Current branch is: $(git branch | sed -n -e 's/^\* \(.*\)/\1/p')"
 git reset --hard HEAD
 git pull origin $GIT_BRANCH
 
-if [ ! -d "$TARGET_PATH" ]; then
-    echo "An error has occurred! Check your target path and try again. Aborting..."
+if [ ! -d "$DEPLOY_DIR" ]; then
+    echo "Error: $DEPLOY_DIR doesn't exist. Please, check it and try again. Aborting..."
     exit 1
 fi
 
 echo "Cleaning up..."
 rm -rf _site
 
-if [[ "$IS_TESTING" == "stable" ]]; then
-    jekyll build
-elif [[ "$IS_TESTING" == "testing" ]]; then
-    jekyll build --drafts --future
-else
-    echo "Error: Given task is neither 'stable' or 'testing'. Exiting..."
+if [[ "$DEPLOY_COMMAND" == "" ]]; then
+    echo "Error: Given jekyll command. Exiting..."
     exit 1
 fi
 
-echo "Deploying to $TARGET_PATH ..."
-rsync -avhz -c --delete _site/ "$TARGET_PATH" # local deploy
-echo "Deployed to $TARGET_PATH !"
+echo "Running bundle install..."
+bundle install
+
+echo "Building..."
+eval $DEPLOY_COMMAND
+
+echo "Deploying to $DEPLOY_DIR ..."
+rsync -avhz -c --delete _site/ "$DEPLOY_DIR" # local deploy
+echo "Deployed to $DEPLOY_DIR !"
