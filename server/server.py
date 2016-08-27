@@ -23,7 +23,7 @@ def default():
     print 'Webhook server online on host: '+config['host']+', port:',config['port']
 
 def show_html():
-    return "The webhook server is running!"
+    return "The webhook server is running! There's no much to do here."
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -36,24 +36,26 @@ def index():
     data = request.get_json()
 
     if not data['action'] == 'deploy':
+        message = "Error: unknown action in POST. Deploy aborted."
+        notify.tell_pushbullet(config,message)
         abort(501) # returns not implemented
 
-    if data['deploy_type'] == 'stable':
-        tasks.deploy(config,'stable')
+    if data['is_production'] == True: # deploying master to production dir
+        tasks.deploy(config['repository_dir'],config['stable_branch'],config['stable_deploy_dir'],config['stable_deploy_command'])
         message = '**'+config['stable_branch']+'** branch has been deployed. \
 You can access it from: '+config['stable_site_url']
         notify.tell_pushbullet(config,message)
         print message
         return 'OK'
-    elif data['deploy_type'] == 'testing':
-        tasks.deploy(config,'testing')
-        message = '**'+config['testing_branch']+'** branch has been deployed \
+    elif data['is_production'] == False: # deploying other branches to testing dir
+        tasks.deploy(config['repository_dir'],data['deploy_branch'],config['testing_deploy_dir'],config['testing_deploy_command'])
+        message = '**'+data['deploy_branch']+'** branch has been deployed \
 with drafts and future posts. You can access it from '+config['testing_site_url']
         notify.tell_pushbullet(config,message)
         print message
         return 'OK'
     else:
-        message = "Error: unknown 'deploy_type' in json POST"
+        message = "Error: unknown value for is_production variable in json POST"
         notify.tell_pushbullet(config,message)
         print message
         return 'Error'
