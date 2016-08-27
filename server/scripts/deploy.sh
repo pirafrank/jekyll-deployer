@@ -30,8 +30,10 @@ if [ ! -d "$REPO_DIR" ]; then
 fi
 cd $REPO_DIR
 
+git remote update origin --prune
 git checkout -f $GIT_BRANCH
 sleep 1
+echo "Current branch is: $(git branch | sed -n -e 's/^\* \(.*\)/\1/p')"
 git reset --hard HEAD
 git pull origin $GIT_BRANCH
 
