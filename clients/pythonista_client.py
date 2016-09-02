@@ -32,8 +32,9 @@ branch = console.alert('Deployer','What do you want to deploy?','master','develo
 
 if branch == 1:
   is_production = True
+  branch = 'master' # actually not used by the server, only for script correctness
 elif branch == 2:
-  branch = 'develop' # change this to your integration branch
+  branch = 'develop' # IMPORTANT: change this to your integration branch
 elif branch == 3:
   branch = dialogs.text_dialog(title='Insert exact branch name:')
   branch = branch.split('\n')[0]

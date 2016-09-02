@@ -17,7 +17,10 @@ That's what a developer on-the-go do when it's tired of ssh-ing to VPS to publis
 
 - one-touch deploy to production (stable) or testing environment
 - post scheduling
-- deploy to a testing location (e.g. test.mywebsite.com)
+- deploy any branch, options:
+    - deploy production or testing branch in one tap
+    - deploy any other branch by typing its name (`v2.0`)
+- deploy to a testing location (e.g. `test.mywebsite.com`)
 - deploy drafts and future posts to a testing location
 - notifications to your smartphone/tablet
 
@@ -31,7 +34,10 @@ That's what a developer on-the-go do when it's tired of ssh-ing to VPS to publis
 - A Pushbullet account (cause everyone likes pocket notifications)
 - your website has to stay in a git repo (of course...)
 
-## More info soon!
+## Versions
+
+- `2.0`: break changes: POST parameters are different from `v1.0`
+- `1.0`: first version
 
 ## License
 
