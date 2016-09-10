@@ -6,9 +6,12 @@
     "stable_branch":"master",
     "stable_deploy_dir":"/var/www/mywebsite.com",
     "testing_deploy_dir":"/var/www/test.mywebsite.com",
+    "stable_deploy_command":"jekyll build",
+    "testing_deploy_command":"jekyll build --drafts --future",
     "stable_site_url":"http://mywebsite.com",
     "testing_site_url":"http://test.mywebsite.com",
     "api_token":"xxxyyyzzz444555666",
     "pushbullet_token":"aaabbbccc111222333dddeeefff",
-    "service_name":"My Awesome website Notificator"
+    "service_name":"My Awesome website Notificator",
+    "postrun_command": "/bin/bash /home/user/scripts/my_awesome_script.sh"
 }
