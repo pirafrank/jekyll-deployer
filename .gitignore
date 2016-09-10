@@ -16,3 +16,4 @@ server/config.json
 venv/
 *.so
 __pycache__/
+server/user_scripts

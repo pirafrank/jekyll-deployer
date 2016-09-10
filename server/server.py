@@ -42,6 +42,7 @@ def index():
 
     if data['is_production'] == True: # deploying master to production dir
         tasks.deploy(config['repository_dir'],config['stable_branch'],config['stable_deploy_dir'],config['stable_deploy_command'])
+        tasks.postrun(config['postrun_command'])
         message = '**'+config['stable_branch']+'** branch has been deployed. \
 You can access it from: '+config['stable_site_url']
         notify.tell_pushbullet(config,message)
